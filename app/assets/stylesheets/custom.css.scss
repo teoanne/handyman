@@ -1,0 +1,25 @@
+/* Background of Front Page */
+
+
+.backgroundimage {
+	background-image: url("bricks1.JPG");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-top: -20px;
+} 
+
+.jumbotron {
+	margin-top: 60px;
+}
+
+.center {
+	position: center;
+}
+
+@import 'bootstrap';
+
+
+
+/* General throughout application */
+
