@@ -1,24 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Rufina);
+
+$font-family-sans-serif: 'Rufina';
+
 /* Background of Front Page */
 
-
 .backgroundimage {
-	background-image: url("bricks1.JPG");
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
+	background: url(bricks1.JPG) center center no-repeat;
+	height: 100%;
+	background-size: cover;
 	margin-top: -20px;
 } 
+
+@import 'bootstrap';
 
 .jumbotron {
 	margin-top: 60px;
 }
 
 .center {
-	position: center;
+	text-align: center;
 }
 
-@import 'bootstrap';
-
+.center_position {
+	text-align: center;
+}
 
 
 /* General throughout application */
