@@ -4,8 +4,13 @@
 	<div class="jumbotron">
 	<h1 class="center">Need some work done? <h1>
 	<h2 class="center">Find a reputable handyman here</h2>
-	<div class="center_position"><%= link_to "Sign up now!", "#", class: "btn btn-large btn-primary" %></div>
+	<% if user_signed_in? %>
+	# do something
+	<% else %>
+	<div class="center_position"><%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %></div>
+	<% end %>
 	</div>
 </div>
 
 </div>
+
