@@ -1,4 +1,6 @@
 Handyman::Application.routes.draw do
+  resources :contractors
+
   devise_for :users
   root "pages#home"
 
