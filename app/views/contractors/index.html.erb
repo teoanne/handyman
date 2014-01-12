@@ -1,9 +1,10 @@
 <div class="container">
-<h1>Listing contractors</h1>
+<h1>All contractors</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Address</th>
       <th>User Email</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @contractors.each do |contractor| %>
       <tr>
+          <td><%= image_tag contractor.image.url(:thumb) %></td>
           <td><%= contractor.name %></td>
           <td><%= contractor.address %></td>
           <td><%= contractor.user.email if contractor.user %></td>

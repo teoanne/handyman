@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= form_for(@contractor) do |f| %>
+<%= form_for@contractor, html: { :multipart => true } do |f| %>
   <% if @contractor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -13,6 +13,11 @@
     </div>
   <% end %>
 
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
