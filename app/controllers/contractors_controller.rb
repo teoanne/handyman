@@ -1,5 +1,7 @@
 class ContractorsController < ApplicationController
   before_action :set_contractor, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show, :index]
 
   
   def index
@@ -12,7 +14,7 @@ class ContractorsController < ApplicationController
 
 
   def new
-    @contractor = Contractor.new
+    @contractor = current_user.contractors.build
   end
 
 
@@ -20,7 +22,7 @@ class ContractorsController < ApplicationController
   end
 
   def create
-    @contractor = Contractor.new(contractor_params)
+    @contractor = current_user.contractors.build(contractor_params)
 
     respond_to do |format|
       if @contractor.save
@@ -61,6 +63,11 @@ class ContractorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contractor
       @contractor = Contractor.find(params[:id])
+    end
+
+    def correct_user
+      @contractor = current_user.contractors.find_by(id: params[:id])
+      redirect_to contractors_path, notice: "You are not authorized to edit this contractor entry" if @contractor.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

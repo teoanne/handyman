@@ -6,6 +6,7 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
+      <th>User Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,17 +16,21 @@
   <tbody>
     <% @contractors.each do |contractor| %>
       <tr>
-        <td><%= contractor.name %></td>
-        <td><%= contractor.address %></td>
-        <td><%= link_to 'Show', contractor %></td>
-        <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
-        <td><%= link_to 'Destroy', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <td><%= contractor.name %></td>
+          <td><%= contractor.address %></td>
+          <td><%= contractor.user.email if contractor.user %></td>
+          <td><%= link_to 'Show', contractor %></td>
+        <% if contractor.user == current_user %>
+          <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
+          <td><%= link_to 'Destroy', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Contractor', new_contractor_path %>
+<% end %>
 </div>
